@@ -1,32 +1,41 @@
 <template>
-  <div class="hello">
-    {{ msg }}
-  </div>
+  <header class="flex">
+    <div class="branding flex">
+      <font-awesome-icon icon="file-invoice-dollar" />
+    </div>
+  </header>
 </template>
 
 <script>
 export default {
   name: 'Navigation',
-  props: {
-    msg: String
-  }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+<style lang="scss" scoped>
+header {
+  z-index: 99;
+  flex-direction: row;
+  background-color: #1e2139;
+  @media (min-width: 900px) {
+    min-height: 100%;
+    min-width: 90px;
+    flex-direction: column;
+    border-radius: 0 20px 20px 0;
+  }
+  .branding {
+    border-radius: 0 20px 20px 0;
+    background-color: #7c5dfa;
+    justify-content: center;
+    padding: 24px;
+    @media (min-width: 900px) {
+      width: 100%;
+    }
+    img {
+      width: auto;
+      height: 30px;
+    }
+  }
 }
 </style>

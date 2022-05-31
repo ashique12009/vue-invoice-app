@@ -1,8 +1,10 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <div v-if="!mobile">
-    <Navigation msg="Welcome to Your Vue.js App"/>
-    <router-view/>
+  <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
+  <div v-if="!mobile" class="flex flex-column app">
+    <Navigation />
+    <div class="app-content flex flex-column">
+      <router-view />
+    </div>
   </div>
   <div v-else>
     <h2>Sorry, this app is not supported in mobile devices.</h2>
@@ -86,6 +88,19 @@ button,
   flex-direction: column;
 }
 
+.app{
+  // background-color: #141625;
+  min-height: 100vh;
+  @media (min-width: 900px) {
+    flex-direction: row !important;
+  }
+  .app-content {
+    padding: 0 20px;
+    flex: 1;
+    position: relative;
+  }
+}
+
 .container{
   width: 100%;
   padding: 40px 10px;
@@ -95,7 +110,7 @@ button,
     padding-top: 72px;
   }
 }
-.nav-link {
+.nav-link{
   text-decoration: none;
   color: initial;
 }
@@ -137,12 +152,5 @@ button,
   background-color: rgba(223, 227, 250, 0.1);
 }
 
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
