@@ -1,7 +1,7 @@
 <template>
   <div @click="checkClick" ref="invoiceWrap" class="invoice-wrap flex flex-column">
     <form @submit.prevent="submitForm" class="invoice-content">
-      <Loading v-show="loading" />
+      <!-- <Loading v-show="loading" /> -->
       <h1 v-if="!editInvoice">New Invoice</h1>
       <h1 v-else>Edit Invoice</h1>
 
@@ -97,6 +97,7 @@
               <td class="price"><input type="text" v-model="item.price" /></td>
               <td class="total flex">${{ (item.total = item.qty * item.price) }}</td>
               <!-- <img @click="deleteInvoiceItem(item.id)" src="@/assets/icon-delete.svg" alt="" /> -->
+              <font-awesome-icon icon="trash" />
             </tr>
           </table>
 
@@ -123,6 +124,8 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
+
 export default {
   name: "InvoiceModal",
   data() {
@@ -150,6 +153,13 @@ export default {
       invoiceDraft: null,
       invoiceItemList: [],
       invoiceTotal: 0,
+    }
+  },
+  methods: {
+    ...mapMutations(["TOGGLE_INVOICE"]),
+
+    closeInvoice() {
+      this.TOGGLE_INVOICE();
     }
   }
 }
@@ -282,8 +292,9 @@ export default {
   input,
   select {
     width: 100%;
-    background-color: #1e2139;
-    color: #fff;
+    // background-color: #1e2139;
+    background-color: #fff;
+    color: #1e2139;
     border-radius: 4px;
     padding: 12px 4px;
     border: none;
