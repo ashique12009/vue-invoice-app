@@ -30,7 +30,17 @@
 
 <script>
 export default {
-  name: "Home"
+  name: "Home",
+  data() {
+    return {
+      filterMenu: false
+    }
+  },
+  methods: {
+    toggleFilterMenu() {
+      this.filterMenu = !this.filterMenu;
+    }
+  }
 }
 </script>
 
@@ -57,6 +67,7 @@ export default {
         background-color: #1e2139 !important;
       }
       .filter {
+        cursor: pointer;
         position: relative;
         margin-right: 40px;
         cursor: pointer;
@@ -70,6 +81,7 @@ export default {
           position: absolute;
           top: 25px;
           list-style: none;
+          color: #fff;
           background-color: #1e2139;
           box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
           li {
