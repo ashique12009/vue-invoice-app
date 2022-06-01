@@ -89,7 +89,7 @@
               <th class="item-name">Item Name</th>
               <th class="qty">Qty</th>
               <th class="price">Price</th>
-              <th class="total">Toal</th>
+              <th class="total">Total</th>
             </tr>
             <tr class="table-items flex" v-for="(item, index) in invoiceItemList" :key="index">
               <td class="item-name"><input type="text" v-model="item.itemName" /></td>
@@ -97,12 +97,14 @@
               <td class="price"><input type="text" v-model="item.price" /></td>
               <td class="total flex">${{ (item.total = item.qty * item.price) }}</td>
               <!-- <img @click="deleteInvoiceItem(item.id)" src="@/assets/icon-delete.svg" alt="" /> -->
-              <font-awesome-icon icon="trash" />
+              <div @click="deleteInvoiceItem(item.id)">
+                <font-awesome-icon icon="trash" />
+              </div>
             </tr>
           </table>
 
           <div @click="addNewInvoiceItem" class="flex button">
-            <!-- <img src="@/assets/icon-plus.svg" alt="" /> -->
+            <font-awesome-icon icon="plus" />
             Add New Item
           </div>
         </div>
@@ -125,6 +127,7 @@
 
 <script>
 import { mapMutations } from 'vuex';
+import { uid } from 'uid';
 
 export default {
   name: "InvoiceModal",
@@ -160,6 +163,21 @@ export default {
 
     closeInvoice() {
       this.TOGGLE_INVOICE();
+    },
+
+    addNewInvoiceItem() {
+      this.invoiceItemList.push({
+        id: uid(),
+        itemName: "",
+        qty: 1,
+        price: 0,
+        total: 0
+      });
+    },
+
+    deleteInvoiceItem(itemId) {
+      console.log(itemId, 'ITEMID');
+      this.invoiceItemList = this.invoiceItemList.filter(item => item.id !== itemId);
     }
   },
   created() {
