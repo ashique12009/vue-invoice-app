@@ -68,8 +68,6 @@ export default createStore({
       context.commit("INVOICES_LOADED");
     },
     async DELETE_INVOICE({ commit }, docId) {
-      // const colRef = collection(db, "invoices");
-      // const getInvoice = db.collection("invoices").doc(docId);
       const docRef = doc(db, "invoices", docId);
       await deleteDoc(docRef);
       commit("DELETE_INVOICE", docId);
