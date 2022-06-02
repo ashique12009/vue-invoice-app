@@ -156,7 +156,7 @@ export default {
   .nav-link {
     margin-bottom: 32px;
     align-items: center;
-    color: #fff;
+    // color: #fff;
     font-size: 12px;
     img {
       margin-right: 16px;
