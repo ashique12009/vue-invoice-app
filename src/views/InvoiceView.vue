@@ -111,7 +111,7 @@ export default {
     this.getCurrentInvoice();
   },
   methods: {
-    ...mapMutations(["SET_CURRENT_INVOICE", "TOGGLE_EDIT_INVOICE", "TOGGLE_INVOICE"]),
+    ...mapMutations(["SET_CURRENT_INVOICE", "TOGGLE_EDIT_INVOICE", "TOGGLE_INVOICE", "UPDATE_STATUS_TO_PAID", "UPDATE_STATUS_TO_PENDING"]),
 
     ...mapActions(["DELETE_INVOICE", "UPDATE_STATUS_TO_PENDING", "UPDATE_STATUS_TO_PAID"]),
 
