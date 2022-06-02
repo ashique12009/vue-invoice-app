@@ -1,15 +1,17 @@
 <template>
-  <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
-  <div v-if="!mobile" class="flex flex-column app">
-    <Navigation />
-    <div class="app-content flex flex-column">
-      <Modal v-if="modalActive" />
-      <InvoiceModal v-if="invoiceModal" />
-      <router-view />
+  <div v-if="invoicesLoaded">
+    <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
+    <div v-if="!mobile" class="flex flex-column app">
+      <Navigation />
+      <div class="app-content flex flex-column">
+        <Modal v-if="modalActive" />
+        <InvoiceModal v-if="invoiceModal" />
+        <router-view />
+      </div>
     </div>
-  </div>
-  <div v-else>
-    <h2>Sorry, this app is not supported in mobile devices.</h2>
+    <div v-else>
+      <h2>Sorry, this app is not supported in mobile devices.</h2>
+    </div>
   </div>
 </template>
 
@@ -50,7 +52,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(["invoiceModal", "modalActive"])
+    ...mapState(["invoiceModal", "modalActive", "invoicesLoaded"])
   }
 }
 </script>
