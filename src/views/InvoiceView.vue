@@ -101,7 +101,7 @@
 <script>
 import { mapActions, mapMutations, mapState } from "vuex";
 export default {
-  name: "invoiceView",
+  name: "InvoiceView",
   data() {
     return {
       currentInvoice: null,
