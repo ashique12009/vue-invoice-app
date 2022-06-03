@@ -197,7 +197,7 @@ export default {
     },
 
     saveDraft() {
-      this.saveDraft = true;
+      this.invoiceDraft = true;
     },
 
     publishInvoice() {
